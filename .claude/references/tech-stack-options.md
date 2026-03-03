@@ -86,3 +86,20 @@
 - dotenv (설정값 관리)
 - es-toolkit (유틸리티)
 - Tossface + Pretendard (디자인 에셋)
+
+## 기술 호환성 원칙
+
+스택 선택 시 다음을 자동으로 보장:
+
+1. **공식 문서 우선**: 각 라이브러리의 공식 문서 Getting Started / 권장 패턴을 기본으로 사용
+2. **프론트↔백 호환**: 백엔드 인증 방식이 정해지면, 프론트도 그 표준에 맞는 클라이언트 라이브러리 사용
+3. **버전 호환**: 주요 라이브러리 간 호환되는 버전 조합 선택 (예: Next.js 14 + NextAuth v5)
+4. **생태계 통일**: 한 생태계의 표준을 따르되, 다른 생태계의 패턴을 섞지 않음
+
+### 스택별 표준 조합 참고
+
+| 스택 | 인증 | DB | 프론트 연동 |
+|------|------|-----|-----------|
+| Next.js | NextAuth.js → 공식 Provider 패턴 | Prisma → 공식 스키마 패턴 | built-in (같은 프레임워크) |
+| Express | Passport.js → 공식 Strategy 패턴 | Prisma → 공식 스키마 패턴 | REST 표준 + 토큰 기반 |
+| Spring Boot | Spring Security → 공식 SecurityFilterChain | Spring Data JPA → 공식 Repository 패턴 | REST 표준 + OAuth2/JWT |
